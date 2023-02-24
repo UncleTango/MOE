@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Video Page</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		video {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			min-width: 100%;
+			min-height: 100%;
+			object-fit: cover;
+			z-index: -1;
+		}
+
+		.background {
+			position: absolute;
+			top: 0;
+			left: 0;
+			min-width: 100%;
+			min-height: 100%;
+			background: linear-gradient(45deg, #2e008b, #97d700);
+			background-size: 20px 20px;
+			z-index: -2;
+		}
+
+		.vertical-link {
+			position: fixed;
+			top: 50%;
+			right: 10%;
+			transform: translate(50%, -50%) rotate(-90deg);
+			padding: 10px;
+			font-size: 30px;
+			font-weight: bold;
+			text-decoration: none;
+			color: #97d700;
+			z-index: 1;
+		}
+
+		@media only screen and (max-width: 768px) {
+			video {
+				object-fit: contain;
+			}
+
+			.vertical-link {
+				right: 5%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- Link to moezerowastewear.com -->
+	<a href="https://moezerowastewear.com" target="_blank" class="vertical-link">moezerowastewear.com</a>
+
+	<!-- Video or background -->
+	<video autoplay loop muted playsinline>
+		<source src="" type="video/mp4">
+		<source src="" type="video/webm">
+	</video>
+	<div class="background"></div>
+
+	<script>
+		// Array of video file names for desktop
+		const desktopVideos = ["moe_desktop/MOE1_backstage_1m7s.mp4", "moe_desktop/MOE2_Clothes clean_zero waste wear_59s.mp4", "moe_desktop/MOE4_Green Tweed_13s.MP4", "moe_desktop/MOE9_interview FINAL_2m3s.mp4", "moe_desktop/MOE10_lineup_moe_13s.mp4", "moe_desktop/MOE18_products_tie_17s.mp4", "moe_mobile_and_desktop/MOE5_insta clothes (1x1)_33s.mp4", "moe_mobile_and_desktop/MOE7_insta konstnär (1x1)_interview_32s.mp4"];
+
+		// Array of video file names for mobile
+		const mobileVideos = ["moe_mobile/MOE3_Clothes w visual_zero waste wear_33s.mp4", "moe_mobile/MOE6_insta clothes (9x16)_32s.mp4", "moe_mobile/MOE8_insta short (9x16)_moe_se_13s.mp4", "moe_mobile/MOE16_moe se_v6_10s.mp4", "moe_mobile/MOE17_products_moe_se_33s.mp4", "moe_mobile/MOE19_visual 1_13s.mov", "moe_mobile/MOE22_zero waste wear Stockholm_v3_13s.mov", "moe_mobile_and_desktop/MOE5_insta clothes (1x1)_33s.mp4", "moe_mobile_and_desktop/MOE7_insta konstnär (1x1)_interview_32s.mp4"];
+
+		// Get a random video from the array based on device width
+		const video = document.querySelector('video');
+		const screenWidth = window.innerWidth;
+		const selectedVideo = (screenWidth <= 768) ? mobileVideos[Math.floor(Math.random() * mobileVideos.length)] : desktopVideos[Math.floor(Math.random() * desktopVideos.length)];
+		video.setAttribute('src', selectedVideo);
+	</script>
+</body>
+</html>
